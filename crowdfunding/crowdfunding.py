@@ -49,6 +49,7 @@ class CrowdCube:
             'X-Requested-With': 'XMLHttpRequest'
         }
     
+
     def scrape(self):
         url = 'https://www.crowdcube.com'
         content = requests.Session().post(url+'/investments', headers=self.headers)
@@ -82,6 +83,7 @@ class KickStarter:
             'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
             'X-Requested-With': 'XMLHttpRequest'
         }
+    
     def scrape(self):
         
         # find IDs for the 15 categories. They are not 1,2, .., 15.
@@ -99,12 +101,11 @@ class KickStarter:
                         '/discover/advanced?google_chrome_workaround\
                         &category_id={!s}&woe_id=0&sort=magic&seed=2462371&page={!s}'.format(i,j)
         
-                # r is the list of JSON structures for category i and page j.
+                # url_page is used to extract a list of JSON structures for category i and page j.
                 projects = requests.get(url_page, headers=self.headers).json()['projects']
                 time_now = int(time())
         
-                # Just using list comprehension to make a list of JSONs to post into my
-                # mongoDB.
+                # Just using list comprehension to make a list of JSONs to post into my mongoDB.
                 data.extend([ [ 'kickstarter',
                                 projects[k]['name'],
                                 projects[k]['blurb'],
