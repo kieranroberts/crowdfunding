@@ -10,7 +10,7 @@ Licensed under MIT.
 def main():
     db = crowdfunding.DatabaseController()
     
-    cc = crowdfunding.CrowdCude()
+    cc = crowdfunding.CrowdCube()
     data = cc.scrape()
     db.update(data)
     
@@ -19,4 +19,4 @@ def main():
     db.update(data)
     
     raised = db.raised(group_by='platform', min_days=10)
-    print('Total raised.\n CrowdCube: ', raised['crowdcube'], '\n KickStarter: ', raised['kickstarer']) 
+    print('Total raised.\nCrowdCube: ', raised['crowdcube'], '\nKickStarter: ', raised['kickstarter']) 
