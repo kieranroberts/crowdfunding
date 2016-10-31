@@ -115,3 +115,20 @@ class KickStarter:
                                 int(1.0*(int(projects[k]['deadline'])-time_now)/(60*60*24)) ] for k in range(len(projects))
                             ])
         return data
+
+
+
+if __name__ == "__main__":
+    def main():
+    db = crowdfunding.DatabaseController()
+    
+    cc = crowdfunding.CrowdCude()
+    data = cc.scrape()
+    db.update(data)
+    
+    ks = crowdfunding.KickStarter()
+    data = ks.scrape()
+    db.update(data)
+    
+    raised = db.raised(group_by='platform', min_days=10)
+    print('Total raised.\n CrowdCube: ', raised['crowdcube'], '\n KickStarter: ', raised['kickstarer']) 
