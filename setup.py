@@ -44,7 +44,7 @@ setup(name="crowdfunding",
       zip_safe=False,
       tests_require=['pytest'],
       cmdclass={'test': PyTest}, 
-      install_requires=['pymongo>=3.3.0', 'bs4>=4.5.1', 'requests>=2.11.1'],
+      install_requires=['pymongo>=3.3.0', 'beautifulsoup4>=4.5.1', 'requests>=2.11.1'],
       entry_points={
         'console_scripts': 
             ['crowdfunding=crowdfunding:main']
