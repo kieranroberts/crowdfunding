@@ -7,6 +7,10 @@ import json
 
 
 class DatabaseController:
+    """
+    A class that creates a mongo database with methods that that update to 
+    aggregates information from the database.
+    """
     def __init__(self):
         self.post = MongoClient('localhost', 27017).client.fundingplatforms.posts
     def update(self, args):

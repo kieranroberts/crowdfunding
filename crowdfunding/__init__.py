@@ -19,4 +19,9 @@ def main():
     db.update(data)
     
     raised = db.raised(group_by='platform', min_days=10)
-    print('Total raised.\nCrowdCube: ', raised['crowdcube'], '\nKickStarter: ', raised['kickstarter']) 
+    cc_raised = raised['crowdcube']
+    ks_raised = raised['kickstarter']
+    print('Capital raised.\n \
+            CrowdCube: ', '{:0,.0f}'.format(cc_raised), ' GBP\n \
+            KickStarter: ', '{:0,.0f}'.format(ks_raised), ' USD\n \
+            Total raised (after currency conversion): ', '{:0,.0f}'.format(cc_raised + 0.82*ks_raised), ' GBP')

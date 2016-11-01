@@ -15,13 +15,20 @@ Installation
 The easiest way to install most Python packages is via ``easy_install`` or ``pip``::
 
     $ easy_install crowdfunding
+    $ pip install crowdfunding
+
+Alternatively, you can install it directly from GitHub::
+
+    $ easy_install git+https://github.com/kieranroberts/crowdfunding.git
+    $ pip install git+https://github.com/kieranroberts/crowdfunding.git
+    
 
 Usage
 -----
 
 TODO: This is a good place to start with a couple of concrete examples of how the package should be used.
 
-The boilerplate code provides a dummy ``main`` function that prints out the word 'Hello'::
+The code provides a dummy ``main`` function that prints out the total raised on projects from both CrowdCube and KickStarter that have at least 10 days remaining ::
 
     >> from crowdfunding import main
     >> main()
