@@ -24,7 +24,7 @@ def main():
     ks = crowdfunding.KickStarter()
     
     threads = []
-    platform = [cc,ks]
+    platforms = [cc,ks]
     
     for platform in platforms:
         threads.append(enthread(target = platform.scrape))
@@ -35,7 +35,7 @@ def main():
     raised = db.raised(group_by='platform', min_days=10)
     cc_raised = raised['crowdcube']
     ks_raised = raised['kickstarter']
-    print('Capital raised.\n \
-            CrowdCube: ', '{:0,.0f}'.format(cc_raised), ' GBP\n \
-            KickStarter: ', '{:0,.0f}'.format(ks_raised), ' USD\n \
-            Total raised (after currency conversion): ', '{:0,.0f}'.format(cc_raised + 0.82*ks_raised), ' GBP')
+    print('Capital raised.\n\
+    CrowdCube: ', '{:0,.0f}'.format(cc_raised), ' GBP\n\
+    KickStarter: ', '{:0,.0f}'.format(ks_raised), ' USD\n\
+    Total raised (after currency conversion): ', '{:0,.0f}'.format(cc_raised + 0.82*ks_raised), ' GBP')
