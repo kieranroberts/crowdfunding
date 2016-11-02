@@ -26,7 +26,7 @@ def main():
     threads = []
     scrapers = [cc,ks]
     
-    for scraper in scrapers
+    for scraper in scrapers:
         threads.append(enthread(target = scraper))
     
     for thread in threads:
