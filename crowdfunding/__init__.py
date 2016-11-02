@@ -2,21 +2,33 @@ from crowdfunding import crowdfunding
 
 '''
 crowdfunding: Main module
-
 Copyright 2016, Kieran Roberts
 Licensed under MIT.
 '''
 
+def enthread(target):
+    q = queue.Queue()
+    def wrapper():
+        q.put(target())
+    t = threading.Thread(target=wrapper)
+    t.start()
+    return q
+
 def main():
     db = crowdfunding.DatabaseController()
     
-    cc = crowdfunding.CrowdCube()
-    data = cc.scrape()
-    db.update(data)
     
+    cc = crowdfunding.CrowdCube()
     ks = crowdfunding.KickStarter()
-    data = ks.scrape()
-    db.update(data)
+    
+    threads = []
+    scrapers = [cc,ks]
+    
+    for scraper in scrapers
+        threads.append(enthread(target = scraper))
+    
+    for thread in threads:
+        db.update(thread.get())
     
     raised = db.raised(group_by='platform', min_days=10)
     cc_raised = raised['crowdcube']
