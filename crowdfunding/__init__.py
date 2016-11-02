@@ -1,4 +1,6 @@
 from crowdfunding import crowdfunding
+import threading
+import queue
 
 '''
 crowdfunding: Main module
