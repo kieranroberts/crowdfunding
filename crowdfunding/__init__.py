@@ -24,10 +24,10 @@ def main():
     ks = crowdfunding.KickStarter()
     
     threads = []
-    scrapers = [cc,ks]
+    platform = [cc,ks]
     
-    for scraper in scrapers:
-        threads.append(enthread(target = scraper))
+    for platform in platforms:
+        threads.append(enthread(target = platform.scrape))
     
     for thread in threads:
         db.update(thread.get())
