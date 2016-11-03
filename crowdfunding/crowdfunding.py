@@ -22,7 +22,8 @@ class DatabaseController:
                         'pct_raised' : arg[5],
                         'days_remain' : arg[6] }
                     for arg in args ]
-        self.post.insert_many(new_posts)
+        for doc in new_posts:
+            self.post.update_one({ 'title' : doc['title'] },{ '$set' : doc }, upsert=True)
     
     def raised(self, group_by=None, min_days = 10):
         if group_by == None:
